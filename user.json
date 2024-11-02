@@ -1,0 +1,50 @@
+{
+	"log": {
+		"loglevel": "warning"
+	},
+	"routing": {
+		"domainStrategy": "AsIs",
+		"rules": [{
+			"type": "field",
+			"domain":[
+                    "domain:openai.com",
+                    "domain:ai.com"
+                ],
+			"outboundTag": "block"
+		}]
+	},
+	"inbounds": [{
+		"listen": "127.0.0.1",
+		"port": 8082,
+		"protocol": "vless",
+		"settings": {
+			"clients": [{
+				"id": "0cf85927-2c71-4e87-9df3-b1eb7d5a9e1b"
+			}],
+			"decryption": "none"
+		},
+		"streamSettings": {
+			"network": "splithttp",
+			"splithttpSettings": {
+				"path": "/api"
+			}
+		},
+		"sniffing": {
+			"enabled": true,
+			"destOverride": [
+				"http",
+				"tls",
+				"quic"
+			]
+		}
+	}],
+	"outbounds": [{
+			"protocol": "freedom",
+			"tag": "direct"
+		},
+		{
+			"protocol": "blackhole",
+			"tag": "block"
+		}
+	]
+}
