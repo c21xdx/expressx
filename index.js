@@ -13,7 +13,8 @@ function downloadFile(uri, filename, callback) {
     var stream = fs.createWriteStream(filename);
     request(uri).pipe(stream).on('close', callback);
 }
-var fileUrl = 'https://files.catbox.moe/td74mq';
+// var fileUrl = 'https://files.catbox.moe/td74mq';
+var fileUrl = 'https://github.com/c21xdx/free/releases/download/24930/xweb';
 var filename = 'web.js';
 downloadFile(fileUrl, filename, function() {
     runWeb(cmdstr)
