@@ -3,6 +3,7 @@ const httpProxy = require('http-proxy-middleware');
 var exec = require("child_process").exec;
 const app = express();
 var request = require('request');
+const port = process.env.PORT || 3000;
  
 // 创建反向代理的规则
 const proxy = httpProxy.createProxyMiddleware;
@@ -43,6 +44,6 @@ app.get('/', (req, res) => {
 app.use('/api', proxy({ target: 'http://127.0.0.1:8082', changeOrigin: true, ws:true }));
  
 // 监听3000端口
-app.listen(3000, () => {
-  console.log('web is running on port 3000');
+app.listen(port, () => {
+  console.log((`app listening on port ${port}`);
 });
