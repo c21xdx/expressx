@@ -43,7 +43,7 @@ app.get('/', (req, res) => {
 // 定义要代理的路由
 app.use('/api', proxy({ target: 'http://127.0.0.1:8082', changeOrigin: true, ws:true }));
  
-// 监听3000端口
+// 监听app端口
 app.listen(port, () => {
-  console.log((`app listening on port ${port}`);
+  console.log(`Example app listening on port ${port}`);
 });
