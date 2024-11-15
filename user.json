@@ -19,7 +19,7 @@
 		"protocol": "vless",
 		"settings": {
 			"clients": [{
-				"id": "0cf85927-2c71-4e87-9df3-b1eb7d5a9e1b"
+				"id": "apppasswd"
 			}],
 			"decryption": "none"
 		},
