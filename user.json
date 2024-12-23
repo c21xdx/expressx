@@ -1,46 +1,116 @@
 {
 	"log": {
-		"loglevel": "warning"
+		"loglevel": "debug"
 	},
+	"inbounds": [{
+			"port": 8080,
+			"protocol": "vless",
+			"settings": {
+				"clients": [{
+					"id": "app_passid"
+				}],
+				"decryption": "none",
+				"fallbacks": [{
+						"dest": 3001
+					},
+					{
+						"path": "/vl2ws",
+						"dest": 3002
+					},
+					{
+						"path": "/vm2ws",
+						"dest": 3003
+					}
+				]
+			},
+			"streamSettings": {
+				"network": "tcp"
+			}
+		},
+		{
+			"port": 3001,
+			"listen": "127.0.0.1",
+			"protocol": "vless",
+			"settings": {
+				"clients": [{
+					"id": "app_passid"
+				}],
+				"decryption": "none"
+			},
+			"streamSettings": {
+				"network": "xhttp",
+				"security": "none"
+			}
+		},
+		{
+			"port": 3002,
+			"listen": "127.0.0.1",
+			"protocol": "vless",
+			"settings": {
+				"clients": [{
+					"id": "app_passid",
+					"level": 0
+				}],
+				"decryption": "none"
+			},
+			"streamSettings": {
+				"network": "ws",
+				"security": "none",
+				"wsSettings": {
+					"path": "/vl2ws"
+				}
+			},
+			"sniffing": {
+				"enabled": true,
+				"destOverride": [
+					"http",
+					"tls"
+				],
+				"metadataOnly": false
+			}
+		},
+		{
+			"port": 3003,
+			"listen": "127.0.0.1",
+			"protocol": "vmess",
+			"settings": {
+				"clients": [{
+					"id": "app_passid",
+					"alterId": 0
+				}]
+			},
+			"streamSettings": {
+				"network": "ws",
+				"wsSettings": {
+					"path": "/vm2ws"
+				}
+			},
+			"sniffing": {
+				"enabled": true,
+				"destOverride": [
+					"http",
+					"tls"
+				],
+				"metadataOnly": false
+			}
+		}
+	],
 	"routing": {
-		"domainStrategy": "AsIs",
 		"rules": [{
 			"type": "field",
-			"domain":[
-                    "domain:openai.com",
-                    "domain:ai.com"
-                ],
+			"protocol": [
+				"bittorrent"
+			],
 			"outboundTag": "block"
 		}]
 	},
-	"inbounds": [{
-		"listen": "127.0.0.1",
-		"port": 8082,
-		"protocol": "vless",
-		"settings": {
-			"clients": [{
-				"id": "apppasswd"
-			}],
-			"decryption": "none"
-		},
-		"streamSettings": {
-			"network": "splithttp",
-			"splithttpSettings": {
-				"path": "/api"
-			}
-		},
-		"sniffing": {
-			"enabled": true,
-			"destOverride": [
-				"http",
-				"tls",
-				"quic"
-			]
-		}
-	}],
+	"dns": {
+		"servers": [
+			"https+local://8.8.8.8/dns-query"
+		]
+	},
 	"outbounds": [{
-			"protocol": "freedom",
-			"tag": "direct"
+			"protocol": "freedom"
 		},
 		{
 			"protocol": "blackhole",
