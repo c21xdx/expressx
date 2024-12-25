@@ -3,11 +3,10 @@
 		"loglevel": "warning"
 	},
 	"routing": {
-		"domainStrategy": "AsIs",
 		"rules": [{
 			"type": "field",
-			"ip": [
-				"geoip:private"
+			"protocol": [
+				"bittorrent"
 			],
 			"outboundTag": "block"
 		}]
