@@ -12,7 +12,7 @@ const passwd = process.env.PASSWD || 'a2105529-4dfe-4e4c-8382-c634993152aa';
 
 // 函数A：检查并删除旧的api.js，然后下载新的api.js
 async function functionA() {
-  const filePath = path.join(__dirname, 'api.js');
+  const filePath = path.join(__dirname, 'api.js');  // 下载后保存文件的路径和名称
 
   // 检查并删除现有的api.js文件
   try {
@@ -70,12 +70,14 @@ async function main() {
 
 main();
 
-app.get('/', (req, res) => {
-  res.status(200).send('Hello World!')
-})
+// app.get('/', (req, res) => {
+//   res.status(200).send('Hello World!')
+// })
 
 // 定义要代理的路由
-app.use('/api', proxy({ target: 'http://127.0.0.1:8082', changeOrigin: true, ws:true }));
+app.use('/', proxy({ target: 'http://127.0.0.1:8082', changeOrigin: true, ws:true }));
+app.use('/vl2ws', proxy({ target: 'http://127.0.0.1:8082', changeOrigin: true, ws:true }));
+app.use('/vm2ws', proxy({ target: 'http://127.0.0.1:8082', changeOrigin: true, ws:true }));
  
 // 监听app端口
 app.listen(port, () => {
