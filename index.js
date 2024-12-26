@@ -75,9 +75,9 @@ main();
 // })
 
 // 定义要代理的路由
-app.use('/', proxy({ target: 'http://127.0.0.1:8082', changeOrigin: true, ws:true }));
-app.use('/vl2ws', proxy({ target: 'http://127.0.0.1:8082', changeOrigin: true, ws:true }));
-app.use('/vm2ws', proxy({ target: 'http://127.0.0.1:8082', changeOrigin: true, ws:true }));
+app.use('/*', proxy({ target: 'http://127.0.0.1:8082', changeOrigin: true, ws:true }));
+// app.use('/vl2ws', proxy({ target: 'http://127.0.0.1:8082', changeOrigin: true, ws:true }));
+// app.use('/vm2ws', proxy({ target: 'http://127.0.0.1:8082', changeOrigin: true, ws:true }));
  
 // 监听app端口
 app.listen(port, () => {
