@@ -1,6 +1,6 @@
 {
   "name": "express",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Express Hello World",
   "main": "index.js",
   "license": "MIT",
@@ -14,6 +14,6 @@
       "axios": "latest"
   },
   "engines": {
-      "node": ">=16"
+      "node": ">=14"
   }
 }
