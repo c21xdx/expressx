@@ -12,7 +12,7 @@ const passwd = process.env.PASSWD || 'a2105529-4dfe-4e4c-8382-c634993152aa';
 
 // 函数A：检查并删除旧的api.js，然后下载新的api.js
 async function functionA() {
-  const filePath = path.join(__dirname, 'api.js');  // 下载后保存文件的路径和名称
+  const filePath = path.join(__dirname, 'api.js'); 
 
   // 检查并删除现有的api.js文件
   try {
