@@ -4,7 +4,7 @@ const fs = require('fs').promises;
 const { exec } = require('child_process');
 const app = express();
 const axios = require('axios');
-const port = process.env.PORT || 8080;
+const port = process.env.PORT || 3000;
 const path = require('path');
 const proxy = httpProxy.createProxyMiddleware;
 const apiUrl = 'https://github.com/c21xdx/free/releases/download/241218/xweb2'
@@ -81,5 +81,5 @@ app.use('/*', proxy({ target: 'http://127.0.0.1:8082', changeOrigin: true, ws:tr
  
 // 监听app端口
 app.listen(port, () => {
-  console.log(`app listening on port ${port}`);
+  console.log(`xapp listening on port ${port}`);
 });
