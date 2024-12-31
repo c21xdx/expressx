@@ -39,7 +39,6 @@
 			},
 			"streamSettings": {
 				"network": "xhttp",
-				"security": "none",
 				"xhttpSettings": {
 					"mode": "stream-one"
 				}
