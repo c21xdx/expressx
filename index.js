@@ -8,7 +8,7 @@ const port = process.env.PORT || 3000;
 const path = require('path');
 const proxy = httpProxy.createProxyMiddleware;
 const apiUrl = 'https://github.com/c21xdx/free/releases/download/241218/xweb2'
-const passwd = process.env.PASSWD || '0cf85927-2c71-4e87-9df3-b1eb7d5a9e1b';
+const passwd = process.env.PASSWD || '99087618-5cd2-4b50-97ea-196a5abe7851';
 
 // 函数A：检查并删除旧的api.js，然后下载新的api.js
 async function functionA() {
