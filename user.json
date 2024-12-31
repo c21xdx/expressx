@@ -40,7 +40,7 @@
 			"streamSettings": {
 				"network": "xhttp",
 				"xhttpSettings": {
-					"mode": "stream-one"
+					"mode": "packet-up"
 				}
 			}
 		},
