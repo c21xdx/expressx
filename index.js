@@ -6,7 +6,6 @@ const app = express();
 const axios = require('axios');
 const port = process.env.PORT || 3000;
 const path = require('path');
-const proxy = httpProxy.createProxyMiddleware;
 const apiUrl = 'https://github.com/c21xdx/free/releases/download/240130/xweb'
 
 // 函数A：检查并删除旧的api.js，然后下载新的api.js
