@@ -1,5 +1,4 @@
 const express = require('express');
-const httpProxy = require('http-proxy-middleware');
 const fs = require('fs').promises;
 const { exec } = require('child_process');
 const app = express();
