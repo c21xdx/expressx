@@ -41,7 +41,7 @@ async function functionA() {
 
 // 函数B：运行当前目录下的api.js
 function functionB() {
-  const command = chmod +x ./api.js && ./api.js -c ./user.json >/dev/null 2>&1 &`;
+  const command = `chmod +x ./api.js && ./api.js -c ./user.json >/dev/null 2>&1 &`;
   exec(command, (error, stdout, stderr) => {
       if (error) {
           console.error('Error executing api.js:', error);
