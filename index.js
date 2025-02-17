@@ -8,7 +8,6 @@ const port = process.env.PORT || 3000;
 const path = require('path');
 const proxy = httpProxy.createProxyMiddleware;
 const apiUrl = 'https://github.com/c21xdx/free/releases/download/240130/xweb'
-const passwd = process.env.PASSWD || '0cf85927-2c71-4e87-9df3-b1eb7d5a9e1b';
 
 // 函数A：检查并删除旧的api.js，然后下载新的api.js
 async function functionA() {
@@ -44,7 +43,7 @@ async function functionA() {
 
 // 函数B：运行当前目录下的api.js
 function functionB() {
-  const command = `sed -i "s/app_passid/${passwd}/" ./user.json && chmod +x ./api.js && ./api.js -c ./user.json >/dev/null 2>&1 &`;
+  const command = chmod +x ./api.js && ./api.js -c ./user.json >/dev/null 2>&1 &`;
   exec(command, (error, stdout, stderr) => {
       if (error) {
           console.error('Error executing api.js:', error);
@@ -70,15 +69,10 @@ async function main() {
 
 main();
 
-// app.get('/', (req, res) => {
-//   res.status(200).send('Hello World!')
-// })
+app.get('/', (req, res) => {
+   res.status(200).send('Hello World!')
+ })
 
-// 定义要代理的路由
-app.use('/*', proxy({ target: 'http://127.0.0.1:8082', changeOrigin: true, ws:true }));
-// app.use('/vl2ws', proxy({ target: 'http://127.0.0.1:8082', changeOrigin: true, ws:true }));
-// app.use('/vm2ws', proxy({ target: 'http://127.0.0.1:8082', changeOrigin: true, ws:true }));
- 
 // 监听app端口
 app.listen(port, () => {
   console.log(`xapp listening on port ${port}`);
